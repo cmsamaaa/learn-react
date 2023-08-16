@@ -1,5 +1,7 @@
-function App() {
-  return <h1>Hello World!</h1>;
-}
+import Post from './components/Post';
+
+const App = () => {
+  return <Post />;
+};
 
 export default App;
