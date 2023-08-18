@@ -48,7 +48,6 @@ const PostsList = () => {
                     />
                 </Modal>
             )}
-            {modalContent}
             <ul className={classes.posts}>
                 <Post author={enteredAuthor} body={enteredBody} />
                 <Post author="CM" body="Check out the full course!" />
