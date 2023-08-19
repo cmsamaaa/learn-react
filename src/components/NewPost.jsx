@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import classes from './NewPost.module.css';
 
-const NewPost = ({ onCancel }) => {
+const NewPost = ({ onCancel, onAddPost }) => {
     // useState returns an array with 2 elements
     // [0] - current value
     // [1] - state updating function
@@ -23,7 +23,7 @@ const NewPost = ({ onCancel }) => {
             body: enteredBody,
             author: enteredAuthor
         };
-        console.log(postData);
+        onAddPost(postData);
         onCancel();
     };
 
