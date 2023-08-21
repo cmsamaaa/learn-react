@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import Post from './Post';
 import NewPost from './NewPost';
@@ -6,10 +7,34 @@ import Modal from './Modal';
 import classes from './PostsList.module.css';
 
 const PostsList = ({ isPosting, onStopPosting }) => {
+
     const [posts, setPosts] = useState([]);
 
+    useEffect(() => {
+        const fetchPosts = async () => {
+            const response = await axios.get('http://localhost:8080/posts');
+            setPosts(response.data.posts);
+        };
+
+        fetchPosts();
+    }, []);
+
     const addPostHandler = (postData) => {
-        setPosts((existingPosts) => [postData, ...existingPosts]);
+        // fetch('http://localhost:8080/posts', {
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     method: 'POST',
+        //     body: JSON.stringify(postData)
+        // });
+
+        axios.post('http://localhost:8080/posts', postData)
+            .then((response) => {
+                setPosts((existingPosts) => [postData, ...existingPosts]);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
     };
 
     // let modalContent;
