@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import classes from './NewPost.module.css';
 import Modal from '../components/Modal';
 
-const NewPost = ({ onCancel, onAddPost }) => {
+const NewPost = ({ onAddPost }) => {
     // useState returns an array with 2 elements
     // [0] - current value
     // [1] - state updating function
@@ -40,7 +41,9 @@ const NewPost = ({ onCancel, onAddPost }) => {
                     <input type="text" id="name" required onChange={authorChangeHandler} />
                 </p>
                 <p className={classes.actions}>
-                    <button type='button' onClick={onCancel}>Cancel</button>
+                    <Link to=".." type='button'>
+                        Cancel
+                    </Link>
                     <button>Submit</button>
                 </p>
             </form>
