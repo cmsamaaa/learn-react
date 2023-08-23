@@ -7,24 +7,6 @@ import classes from './PostsList.module.css';
 const PostsList = () => {
     const posts = useLoaderData();
 
-    const addPostHandler = (postData) => {
-        // fetch('http://localhost:8080/posts', {
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     method: 'POST',
-        //     body: JSON.stringify(postData)
-        // });
-
-        axios.post('http://localhost:8080/posts', postData)
-            .then((response) => {
-                setPosts((existingPosts) => [postData, ...existingPosts]);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-    };
-
     // let modalContent;
 
     // if (modalIsVisible) {
